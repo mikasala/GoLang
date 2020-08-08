@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "time"
+    "github.com/mikasala/GoLang/oop"
 )
 
 func f(from string) {
@@ -23,4 +24,12 @@ func main() {
 
     time.Sleep(time.Second)
     fmt.Println("done")
+
+    user := oop.User{}
+    user.FirstName = "Maru"
+    user.LastName = "Kasala"
+    user.Cars = 20
+    user.CarsSold = 10
+    user.CarsRemaining()
+
 }
