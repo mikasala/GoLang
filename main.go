@@ -30,6 +30,9 @@ func main() {
     user.LastName = "Kasala"
     user.Cars = 20
     user.CarsSold = 10
-    user.CarsRemaining()
+    user.PrintCarsRemaining()
+
+    user2 := oop.user()
+    user2.PrintCarsRemaining()
 
 }
