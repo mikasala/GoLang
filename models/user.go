@@ -1,5 +1,5 @@
 // In C# : namespace user{class user}
-package user
+package models
 
 // In C#: using "fmt"
 import (
@@ -84,21 +84,22 @@ import (
 // In Golang: 	[variable name] [data type]
 
 // Class/Object
-// Case Sensitive
-// Uppercase : exported class/struct
-// Can be different from file name
-type User struct {
-    FirstName 		string
+// Case Sensitive : applies on all (class name, properties, methods)
+// Uppercase : exported class/struct or considered as public in OOP
+// Lowercase : imported class/struct or considered as private
+
+// public class
+type PublicUser struct {
+	// public properties 
+	FirstName 		string
 	LastName 		string
 	Cars 			int
 	CarsSold		int
 }
 
-// Lowercase : imported class/struct
-// if using imported class/struct,
-// the struct name must be same as folder name,
-// unlike exported, any exported struct name can be used
-type user struct {
+// public class
+type User struct {
+	// private properties
     firstName 		string
 	lastName 		string
 	cars 			int
@@ -114,8 +115,9 @@ type user struct {
 // In Golang: 		[function name]([parameters])
 
 // New() is the function ; user is the type of data to be returned
-func New() user{// Acts like constructor
-	user := user{}
+// New() : function name | User is return data type  
+func NewUser() User {// Acts like constructor
+	user := User{}
 	user.firstName = "First Name"
 	user.lastName = "Last Name"
 	user.cars = 0
@@ -129,21 +131,52 @@ func New() user{// Acts like constructor
 
 // Pass by Value
 // This works like methods with type void
+// func (u PublicUser) PrintCarsRemaining() {
+// 	fmt.Printf("%s %s has %d cars\n", u.FirstName, u.LastName, (u.Cars - u.CarsSold))
+// }
 func (u User) PrintCarsRemaining() {
-	fmt.Printf("%s %s has %d cars\n", u.FirstName, u.LastName, (u.Cars - u.CarsSold))
-}
-func (u user) PrintCarsRemaining() {
 	fmt.Printf("%s %s has %d cars\n", u.firstName, u.lastName, (u.cars - u.carsSold))
 }
 // Pass by Reference: 
 // *user means values of that object/struct can be changed
 // using value with type string
-func (u *user) SetFirstName(value string) {// Acts like setter in PHP or Java
+func (u *User) SetFirstName(value string) {// Acts like setter in PHP or Java
 	u.firstName = value
 }
 
-// Methods that return data
-func (u user) GetFirstName() string{// Acts like getter in PHP or Java
+// Method that return data
+func (u User) GetFirstName() string{// Acts like getter in PHP or Java
 	return u.firstName
+}
+
+func (u *User) SetLastName(value string) {// Acts like setter in PHP or Java
+	u.lastName = value
+}
+
+// Method that return data
+func (u User) GetLastName() string{// Acts like getter in PHP or Java
+	return u.lastName
+}
+
+func (u *User) SetCars(value int) {// Acts like setter in PHP or Java
+	u.cars = value
+}
+
+// Method that return data
+func (u User) GetCars() int{// Acts like getter in PHP or Java
+	return u.cars
+}
+
+func (u *User) SetCarsSold(value int) {// Acts like setter in PHP or Java
+	u.carsSold = value
+}
+
+// Method that return data
+func (u User) GetCarsSold() int{// Acts like getter in PHP or Java
+	return u.carsSold
+}
+
+func (u *User) AppendLastNameToFirstName(){
+	u.firstName = u.firstName + " " + u.lastName
 }
 
