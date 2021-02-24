@@ -106,6 +106,15 @@ type User struct {
 	carsSold		int
 }
 
+// private class
+type privateUser struct {
+	// private properties
+    firstName 		string
+	lastName 		string
+	cars 			int
+	carsSold		int
+}
+
 // Functions with return data:
 // In C/C#/Java: 	[data type] [functon name]([parameters])
 // In Golang: 		[function name]([parameters]) [data type]
@@ -118,6 +127,17 @@ type User struct {
 // New() : function name | User is return data type  
 func NewUser() User {// Acts like constructor
 	user := User{}
+	user.firstName = "First Name"
+	user.lastName = "Last Name"
+	user.cars = 0
+	user.carsSold = 0
+
+	return user
+}
+
+// Constructor for private class
+func NewPrivateUser() privateUser {// Acts like constructor
+	user := privateUser{}
 	user.firstName = "First Name"
 	user.lastName = "Last Name"
 	user.cars = 0
@@ -146,6 +166,17 @@ func (u *User) SetFirstName(value string) {// Acts like setter in PHP or Java
 
 // Method that return data
 func (u User) GetFirstName() string{// Acts like getter in PHP or Java
+	return u.firstName
+}
+
+// for privateUSer
+func (u *privateUser) SetFirstName(value string) {// Acts like setter in PHP or Java
+	u.firstName = value
+}
+
+// for privateUser
+// Method that return data
+func (u privateUser) GetFirstName() string{// Acts like getter in PHP or Java
 	return u.firstName
 }
 
