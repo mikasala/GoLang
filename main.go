@@ -5,6 +5,7 @@ import (
     "time"
     "sync"
     "net/http"
+    "log"
     "github.com/mikasala/GoLang/models"
     "github.com/mikasala/GoLang/api"
 )
@@ -85,8 +86,11 @@ func main() {
     user3.SetFirstName("you") //  set firstname to you
     fmt.Println(user3.GetFirstName())
 
+    regHandlers()
+    log.Fatal(http.ListenAndServe(":1818", nil))
+
 }
 
 func regHandlers(){
-    http.HandleFunc("/test", api.TestAPI)
+    http.HandleFunc("/test/", apsi.TestAPI)
 }
