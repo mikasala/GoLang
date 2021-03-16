@@ -4,7 +4,9 @@ import (
     "fmt"
     "time"
     "sync"
+    "net/http"
     "github.com/mikasala/GoLang/models"
+    "github.com/mikasala/GoLang/api"
 )
 
 func f(word string) {
@@ -83,4 +85,8 @@ func main() {
     user3.SetFirstName("you") //  set firstname to you
     fmt.Println(user3.GetFirstName())
 
+}
+
+func regHandlers(){
+    http.HandleFunc("/test", api.TestAPI)
 }
