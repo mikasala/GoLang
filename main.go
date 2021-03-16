@@ -86,8 +86,8 @@ func main() {
     user3.SetFirstName("you") //  set firstname to you
     fmt.Println(user3.GetFirstName())
 
-    regHandlers()
-    log.Fatal(http.ListenAndServe(":1818", nil))
+    regHandlers() // registers the api handlers
+    log.Fatal(http.ListenAndServe(":1818", nil)) //  listen and serve at port 1818
 
 }
 
